@@ -136,6 +136,9 @@
 
         function add_ex() {
             let new_ex = $('#new-example').val();
+            if (!new_ex) {
+                return alert('Hey user, you forgot a example')
+            }
             $.ajax({
                 type: "POST",
                 url: `/api/save_ex`,
@@ -148,6 +151,7 @@
                     if (response.result === 'success') {
                         alert(response.msg);
                         get_examples();
+                        window.location.reload();
                     }
                 }
             });
@@ -166,7 +170,7 @@
                 success: function (response) {
                     if (response.result === 'success') {
                         alert(response.msg);
-                        get_examples();a
+                        get_examples(); a
                     }
                 }
             });
